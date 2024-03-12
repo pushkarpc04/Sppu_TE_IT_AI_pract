@@ -1,6 +1,5 @@
 #Write a program for sorting algorithms using appropriate knowledge representation and
 #reasoning techniques
-
 def bubble_sort(arr):
     n = len(arr)
 
@@ -50,25 +49,42 @@ def merge_sort(arr):
             j += 1
             k += 1
 
-# Get user input for array
-input_str = input("Enter space-separated integers for the array: ")
-arr = list(map(int, input_str.split()))
+def get_user_input_array():
+    input_str = input("Enter space-separated integers for the array: ")
+    arr = list(map(int, input_str.split()))
+    return arr
 
-# Get user input for sorting method
-sorting_method = input("Enter sorting method (bubble/selection/merge): ").lower()
+def get_sorting_method():
+    print("\nSelect sorting method:")
+    print("1. Bubble Sort")
+    print("2. Merge Sort")
+    print("3. Selection Sort")
+    print("4. Exit")
+    choice = input("Enter your choice: ")
+    return choice
 
-# Perform the selected sorting method
-if sorting_method == 'bubble':
-    bubble_sorted_arr = list(arr)
-    bubble_sort(bubble_sorted_arr)
-    print("Bubble Sorted Array:", bubble_sorted_arr)
-elif sorting_method == 'selection':
-    selection_sorted_arr = list(arr)
-    selection_sort(selection_sorted_arr)
-    print("Selection Sorted Array:", selection_sorted_arr)
-elif sorting_method == 'merge':
-    merge_sorted_arr = list(arr)
-    merge_sort(merge_sorted_arr)
-    print("Merge Sorted Array:", merge_sorted_arr)
-else:
-    print("Invalid sorting method. Please enter 'bubble', 'selection', or 'merge'.")
+def main():
+    while True:
+        arr = get_user_input_array()
+        choice = get_sorting_method()
+
+        if choice == '1':
+            bubble_sorted_arr = list(arr)
+            bubble_sort(bubble_sorted_arr)
+            print("Bubble Sorted Array:", bubble_sorted_arr)
+        elif choice == '2':
+            merge_sorted_arr = list(arr)
+            merge_sort(merge_sorted_arr)
+            print("Merge Sorted Array:", merge_sorted_arr)
+        elif choice == '3':
+            selection_sorted_arr = list(arr)
+            selection_sort(selection_sorted_arr)
+            print("Selection Sorted Array:", selection_sorted_arr)
+        elif choice == '4':
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+if __name__ == "__main__":
+    main()
