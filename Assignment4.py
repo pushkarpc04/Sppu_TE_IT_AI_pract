@@ -5,7 +5,6 @@
 #c. Remove stop words
 #d. POS tagging
 
-
 import nltk
 from nltk import word_tokenize, FreqDist, pos_tag
 from nltk.corpus import stopwords
@@ -27,27 +26,35 @@ def remove_stop_words(tokens):
 def pos_tagging(tokens):
     return pos_tag(tokens)
 
-# Get user input
-text = input("Enter a sentence or a paragraph: ")
+def get_user_input():
+    text = input("Enter a sentence or a paragraph: ")
+    operation = input("Select operation:\n1. Tokenization\n2. Word Frequency\n3. Remove Stop Words\n4. POS Tagging\n5. Exit\nEnter your choice: ")
+    return text, operation
 
-# Ask user which operation to perform
-operation = input("Select operation (a. Tokenization, b. Word Frequency, c. Remove Stop Words, d. POS Tagging): ").lower()
+def main():
+    while True:
+        text, operation = get_user_input()
 
-# Perform the selected operation
-if operation == 'a':
-    tokens = text_tokenization(text)
-    print("Tokens:", tokens)
-elif operation == 'b':
-    tokens = text_tokenization(text)
-    word_frequency = count_word_frequency(tokens)
-    print("Word Frequency:", word_frequency)
-elif operation == 'c':
-    tokens = text_tokenization(text)
-    tokens_without_stopwords = remove_stop_words(tokens)
-    print("Tokens without Stop Words:", tokens_without_stopwords)
-elif operation == 'd':
-    tokens = text_tokenization(text)
-    pos_tags = pos_tagging(tokens)
-    print("POS Tags:", pos_tags)
-else:
-    print("Invalid operation. Please select a, b, c, or d.")
+        if operation == '1':
+            tokens = text_tokenization(text)
+            print("Tokens:", tokens)
+        elif operation == '2':
+            tokens = text_tokenization(text)
+            word_frequency = count_word_frequency(tokens)
+            print("Word Frequency:", word_frequency)
+        elif operation == '3':
+            tokens = text_tokenization(text)
+            tokens_without_stopwords = remove_stop_words(tokens)
+            print("Tokens without Stop Words:", tokens_without_stopwords)
+        elif operation == '4':
+            tokens = text_tokenization(text)
+            pos_tags = pos_tagging(tokens)
+            print("POS Tags:", pos_tags)
+        elif operation == '5':
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 5.")
+
+if __name__ == "__main__":
+    main()
