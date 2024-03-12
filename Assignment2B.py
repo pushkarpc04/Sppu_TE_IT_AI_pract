@@ -1,5 +1,4 @@
 #Write a program for Water jug problem / Towers of Hano
-
 from queue import Queue
 
 def water_jug_bfs(capacity_jug1, capacity_jug2, target):
@@ -36,9 +35,19 @@ def water_jug_bfs(capacity_jug1, capacity_jug2, target):
 
     return None
 
-# Example usage
-capacity_jug1 = 4
-capacity_jug2 = 3
-target = 2
-result = water_jug_bfs(capacity_jug1, capacity_jug2, target)
-print("Water Jug Solution:", result)
+def get_input():
+    capacity_jug1 = int(input("Enter capacity of jug 1: "))
+    capacity_jug2 = int(input("Enter capacity of jug 2: "))
+    target = int(input("Enter the target amount of water: "))
+    return capacity_jug1, capacity_jug2, target
+
+def main():
+    capacity_jug1, capacity_jug2, target = get_input()
+    result = water_jug_bfs(capacity_jug1, capacity_jug2, target)
+    if result:
+        print("Water Jug Solution:", result)
+    else:
+        print("No solution found.")
+
+if __name__ == "__main__":
+    main()
