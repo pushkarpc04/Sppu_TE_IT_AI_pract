@@ -40,7 +40,14 @@ def hill_climbing(n):
 
     return current_board
 
-# Example usage
-n = 8
-solution = hill_climbing(n)
-print("N-Queens Solution:", solution)
+def get_input():
+    n = int(input("Enter the number of queens (n): "))
+    return n
+
+def main():
+    n = get_input()
+    solution = hill_climbing(n)
+    print("N-Queens Solution:", solution)
+
+if __name__ == "__main__":
+    main()
